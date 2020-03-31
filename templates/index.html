@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consumo</title>
+
+    <script>
+        function checkkm(){
+            const km = document.getElementById("km")
+            const tiempo = document.getElementById("tiempo")
+            const consumomed = document.getElementById("consumomed")
+            var toret = true;
+            if(km.value.trim().length === 0 || tiempo.value.trim().length === 0 || consumomed.value.trim().length === 0){
+                toret = false;
+            }else if(!isNaN(km) || !isNaN(consumomed) || !isNaN(tiempo)){
+                toret = false;
+            }else if(tiempo.value <= 0 || km.value < 0 || consumomed.value < 0){
+                toret = false;
+            }
+           return toret;
+        }
+
+    </script>
+
+</head>
+<body>
+    <h1>Consumo</h1>
+
+    <form id="frmConsumo" action="/consumo" method="post" onsubmit="return checkkm()">
+        <label for="km">Kilometros:</label>
+        <input type="number" id="km" name="km"/>
+        <label for="tiempo">tiempo:</label>
+        <input type="number" id="tiempo" name="tiempo"/>
+        <label for="consumomed">Consumo medio:</label>
+        <input type="number" id="consumomed" name="consumomed"/>
+        <input type="submit" value="calcular" />
+    </form>
+</body>
+</html>
